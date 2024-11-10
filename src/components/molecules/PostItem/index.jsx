@@ -12,7 +12,9 @@ function PostItem(props) {
                 <div className='title-warapper'>
                     <h3 className='title'>{title}</h3>
                     <div className='edit-wrapper'>
-                        <Button title='Edit' />
+                        <NavLink to={`/post-form/${_id}`}>
+                            <Button title='Edit' />
+                        </NavLink>
                         <Gap width={10} />
                         <Button title='Hapus' onClick={onDelete} />
                     </div>

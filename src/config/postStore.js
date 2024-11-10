@@ -31,12 +31,33 @@ const fakePosts = [{
 const usePostStore = create((set, get) => ({
     posts: [],
     getPosts: () => {
-        set({
-            posts: fakePosts
-        })
+        if (get().posts.length === 0) {
+            set({
+                posts: fakePosts
+            })
+        }
     },
     getPostById: (id) => {
         return get().posts.find((post) => post._id == id)
+    },
+    addPost: (post) => {
+        set((state) => ({
+            posts: [...state.posts, {
+                ...post,
+                _id: state.posts.length + 1,
+                createdAt: '2024-09-01',
+                author: "Siti Zakiyah",
+                image: 'https://picsum.photos/800'
+            }]
+        }))
+    },
+    updatePost: (id, updatedPost) => {
+        set((state) => ({
+            posts: state.posts.map((post) => post._id == id ? {
+                ...post,
+                ...updatedPost
+            } : post)
+        }))
     }
 }))
 
