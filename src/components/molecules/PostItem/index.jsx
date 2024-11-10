@@ -2,7 +2,7 @@ import './postItem.css'
 import { Button, Gap } from '../../atoms'
 
 function PostItem(props) {
-    const { image, title, date, name, body } = props
+    const { image, title, date, name, body, onDelete } = props
 
     return (
         <div className='blog-item'>
@@ -13,7 +13,7 @@ function PostItem(props) {
                     <div className='edit-wrapper'>
                         <Button title='Edit' />
                         <Gap width={10} />
-                        <Button title='Hapus' />
+                        <Button title='Hapus' onClick={onDelete} />
                     </div>
                 </div>
                 <p className='author' >{name} - {date}</p>
