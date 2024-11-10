@@ -16,7 +16,7 @@ export const routes = createBrowserRouter([
                 element: <PostForm />
             },
             {
-                path: '/post-detail',
+                path: '/post-detail/:id',
                 element: <PostDetail />
             }
         ]

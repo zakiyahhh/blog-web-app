@@ -1,8 +1,16 @@
+import { useEffect } from 'react'
 import { Button, Gap, PostItem } from '../../components'
 import Swal from 'sweetalert2'
 import './home.css'
+import usePostStore from '../../config/postStore'
 
 function Home() {
+    const { posts, getPosts } = usePostStore()
+
+    useEffect(() => {
+        getPosts()
+    }, [getPosts])
+
     const handleDelete = () => {
         Swal.fire({
             title: "Apakah anda yakin?",
@@ -31,14 +39,18 @@ function Home() {
             </div>
             <Gap height={20} />
             <div className="content-wrapper">
-                <PostItem
-                    image="https://picsum.photos/800"
-                    title="Image Title"
-                    name="Siti Zakiyah"
-                    date="13 Nov 2024"
-                    body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in accumsan magna. Cras pellentesque ornare felis sed faucibus. Quisque mollis turpis est, vitae tempor sem porttitor at. Donec eget pretium diam."
-                    onDelete={() => handleDelete()}
-                />
+                {posts.map((post) => (
+                    <PostItem
+                        key={post._id}
+                        _id={post._id}
+                        image={post.image}
+                        title={post.title}
+                        name="Siti Zakiyah"
+                        date={post.createdAt}
+                        body={post.body}
+                        onDelete={() => handleDelete()}
+                    />
+                ))}
             </div>
         </div>
     )
