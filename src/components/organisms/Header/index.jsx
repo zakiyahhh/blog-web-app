@@ -1,9 +1,10 @@
 import './header.css'
+import { NavLink } from 'react-router-dom'
 
 function Header() {
     return (
         <header className='header'>
-            <p className='logo-app'>My Blog App</p>
+            <NavLink to="/" className='logo-app'>My Blog App</NavLink>
         </header>
     )
 }

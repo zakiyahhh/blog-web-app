@@ -1,5 +1,6 @@
 import './postItem.css'
 import { Button, Gap } from '../../atoms'
+import { NavLink } from 'react-router-dom'
 
 function PostItem(props) {
     const { image, title, date, name, body, onDelete } = props
@@ -19,7 +20,9 @@ function PostItem(props) {
                 <p className='author' >{name} - {date}</p>
                 <p className='body' >{body}</p>
                 <Gap height={20} />
-                <Button title="Lihat Detail" />
+                <NavLink to="/post-detail">
+                    <Button title="Lihat Detail" />
+                </NavLink>
             </div>
         </div>
     )
